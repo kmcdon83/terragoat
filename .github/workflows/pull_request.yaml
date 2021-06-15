@@ -8,9 +8,11 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-
-      - name: Run Checkov action
-        id: checkov
-        uses: bridgecrewio/checkov-action@master
+      - name: KICS Github Action
+      # You may pin to the exact commit or the version.
+      # uses: Checkmarx/kics-github-action@a1f009395f830a3972f2bd759e1f78caa5effcf2
+        uses: Checkmarx/kics-github-action@v1.2
         with:
-          directory: terraform/
+          # paths to a file or directories to scan, accepts a comma separated list
+          path: .
+          # defines which non-zero exit codes should be ignored (all, results, errors, none)
