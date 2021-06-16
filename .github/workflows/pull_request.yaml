@@ -18,4 +18,9 @@ jobs:
           # defines which non-zero exit codes should be ignored (all, results, errors, none)
           ignore_on_exit: all
           output_formats: json
-          output_path: cx.sarif
+          output_path: cx.json
+      - name: Expose report
+        uses: actions/upload-artifact@v2
+        with:
+          name: kics results
+          path: cx.json
