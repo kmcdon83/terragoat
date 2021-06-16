@@ -1,4 +1,4 @@
-name: build
+name: KICS Push
 on:
   push:
     branches:
