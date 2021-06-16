@@ -1,12 +1,14 @@
 name: build
 on:
-  pull_request
+  pull_request:
+    branches:
+      - main
 jobs:
   kics-job:
     runs-on: ubuntu-latest
     name: kics
     steps:
-      - name: Checkout repo
+      - name: Checkout
         uses: actions/checkout@v2
       - name: kics
         uses: Checkmarx/kics-github-action@v1.2
@@ -15,16 +17,5 @@ jobs:
           path: terraform/aws/
           # defines which non-zero exit codes should be ignored (all, results, errors, none)
           ignore_on_exit: all
-          output_formats: sarif
+          output_formats: json
           output_path: cx.sarif
-      - name: Init CodeQL
-        uses: github/codeql-action/init@v1
-      - name: Expose report
-        uses: actions/upload-artifact@v2
-        with:
-          name: SARIF results
-          path: cx.sarif
-      - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v1
-        with:
-          sarif_file: cx.sarif
