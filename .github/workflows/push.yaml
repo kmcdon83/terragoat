@@ -16,7 +16,9 @@ jobs:
           # paths to a file or directories to scan, accepts a comma separated list
           path: terraform/aws/
           ignore_on_exit: all
-          output_formats: sarif        
+          output_formats: sarif 
+      - name: list
+        run: find .
       - name: Expose report
         uses: actions/upload-artifact@v2
         with:
