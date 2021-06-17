@@ -17,6 +17,7 @@ jobs:
           path: terraform/aws/
           ignore_on_exit: all
           output_formats: sarif 
+          output_path: ./
       - name: list
         run: find .
       - name: Expose report
